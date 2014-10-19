@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.kay-muench.reqif10</groupId>
+	<artifactId>reqif-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>reqif-Parent</name>
+	<description>Parent pom for reqiftools-projects.</description>
+	<contributors>
+		<contributor>
+			<name>Kay Erik Münch</name>
+		</contributor>
+	</contributors>
+	<licenses>
+		<license>
+			<name>Eclipse Public License 1.0</name>
+			<url>http://www.spdx.org/licenses/EPL-1.0</url>
+			<comments>Copyright (c) 2014 Kay Erik Münch. All rights reserved. 
+	This program and the accompanying materials are made available under the 
+	terms of the Eclipse Public License v1.0 which accompanies this distribution, 
+	and is available at http://www.spdx.org/licenses/EPL-1.0</comments>
+		</license>
+
+	</licenses>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<emf-version>2.9.1.v20130827-0309</emf-version>
+		<rmf-version>0.11.0.201408280302</rmf-version>
+		<imageinformationprovider-version>0.0.1-SNAPSHOT</imageinformationprovider-version>
+		<junit-version>4.11</junit-version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+				<version>${emf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.ecore</artifactId>
+				<version>${emf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.emf</groupId>
+				<artifactId>org.eclipse.emf.common</artifactId>
+				<version>${emf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rmf</groupId>
+				<artifactId>org.eclipse.rmf.reqif10</artifactId>
+				<version>${rmf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rmf</groupId>
+				<artifactId>org.eclipse.rmf.reqif10.common</artifactId>
+				<version>${rmf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rmf</groupId>
+				<artifactId>org.eclipse.rmf.reqif10.xhtml</artifactId>
+				<version>${rmf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.rmf</groupId>
+				<artifactId>org.eclipse.rmf.serialization</artifactId>
+				<version>${rmf-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.kay-muench</groupId>
+				<artifactId>imageinformationprovider</artifactId>
+				<version>${imageinformationprovider-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+	<url>de.kay-muench.reqif10</url>
+	<modules>
+		<module>../reqifcompiler</module>
+	</modules>
+</project>
