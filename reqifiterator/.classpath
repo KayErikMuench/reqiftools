@@ -33,5 +33,14 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/swa/.m2/repository/org/eclipse/rmf/org.eclipse.rmf.reqif10.common/0.11.0.201408280302/org.eclipse.rmf.reqif10.common-0.11.0.201408280302.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.eclipse.rmf"/>
+			<attribute name="maven.artifactId" value="org.eclipse.rmf.reqif10.common"/>
+			<attribute name="maven.version" value="0.11.0.201408280302"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
