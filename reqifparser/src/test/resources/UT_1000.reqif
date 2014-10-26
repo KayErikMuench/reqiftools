@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reqif:REQ-IF xmlns:reqif="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <reqif:THE-HEADER>
+    <reqif:REQ-IF-HEADER IDENTIFIER="42">
+      <reqif:COMMENT>RequieTool export</reqif:COMMENT>
+      <reqif:CREATION-TIME>1970-01-01T00:00:00.000Z</reqif:CREATION-TIME>
+      <reqif:REQ-IF-TOOL-ID>RequieTool (c) Kay Münch</reqif:REQ-IF-TOOL-ID>
+      <reqif:REQ-IF-VERSION>1.0</reqif:REQ-IF-VERSION>
+      <reqif:SOURCE-TOOL-ID>RequieTool (c) Kay Münch</reqif:SOURCE-TOOL-ID>
+      <reqif:TITLE>test</reqif:TITLE>
+    </reqif:REQ-IF-HEADER>
+  </reqif:THE-HEADER>
+  <reqif:CORE-CONTENT>
+    <reqif:REQ-IF-CONTENT>
+      <reqif:DATATYPES>
+        <reqif:DATATYPE-DEFINITION-STRING IDENTIFIER="2" LONG-NAME="T_String" MAX-LENGTH="32000"/>
+        <reqif:DATATYPE-DEFINITION-DATE IDENTIFIER="3" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="T_Date"/>
+        <reqif:DATATYPE-DEFINITION-XHTML IDENTIFIER="4" LONG-NAME="T_Xhtml"/>
+        <reqif:DATATYPE-DEFINITION-STRING IDENTIFIER="5" LONG-NAME="T_Headline"/>
+        <reqif:DATATYPE-DEFINITION-ENUMERATION IDENTIFIER="6" LONG-NAME="T_ReqStatus">
+          <reqif:SPECIFIED-VALUES>
+            <reqif:ENUM-VALUE IDENTIFIER="7" LONG-NAME="StatusTest">
+              <reqif:PROPERTIES>
+                <reqif:EMBEDDED-VALUE KEY="0" OTHER-CONTENT=""/>
+              </reqif:PROPERTIES>
+            </reqif:ENUM-VALUE>
+          </reqif:SPECIFIED-VALUES>
+        </reqif:DATATYPE-DEFINITION-ENUMERATION>
+        <reqif:DATATYPE-DEFINITION-ENUMERATION IDENTIFIER="8" LONG-NAME="T_ReqRanking">
+          <reqif:SPECIFIED-VALUES>
+            <reqif:ENUM-VALUE IDENTIFIER="9" LONG-NAME="RankingTest">
+              <reqif:PROPERTIES>
+                <reqif:EMBEDDED-VALUE KEY="0" OTHER-CONTENT=""/>
+              </reqif:PROPERTIES>
+            </reqif:ENUM-VALUE>
+          </reqif:SPECIFIED-VALUES>
+        </reqif:DATATYPE-DEFINITION-ENUMERATION>
+      </reqif:DATATYPES>
+      <reqif:SPEC-TYPES>
+        <reqif:SPEC-OBJECT-TYPE IDENTIFIER="26" LONG-NAME="ConfigurationSpecObjectType">
+          <reqif:SPEC-ATTRIBUTES>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="21" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="ID">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>2</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+            <reqif:ATTRIBUTE-DEFINITION-XHTML IDENTIFIER="22" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="Description">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-XHTML-REF>4</reqif:DATATYPE-DEFINITION-XHTML-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-XHTML>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="23" LONG-NAME="Status" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>6</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>7</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>23</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="24" LONG-NAME="Priority" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>8</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>24</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="25" LONG-NAME="Risk" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>8</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>25</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+          </reqif:SPEC-ATTRIBUTES>
+        </reqif:SPEC-OBJECT-TYPE>
+        <reqif:SPEC-OBJECT-TYPE IDENTIFIER="19" LONG-NAME="BaselineSpecObjectType">
+          <reqif:SPEC-ATTRIBUTES>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="14" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="ID">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>2</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+            <reqif:ATTRIBUTE-DEFINITION-XHTML IDENTIFIER="15" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="Description">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-XHTML-REF>4</reqif:DATATYPE-DEFINITION-XHTML-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-XHTML>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="16" LONG-NAME="Status" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>6</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>7</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>16</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="17" LONG-NAME="Priority" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>8</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>17</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+            <reqif:ATTRIBUTE-DEFINITION-ENUMERATION IDENTIFIER="18" LONG-NAME="Risk" MULTI-VALUED="false">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-ENUMERATION-REF>8</reqif:DATATYPE-DEFINITION-ENUMERATION-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+                  <reqif:VALUES>
+                    <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+                  </reqif:VALUES>
+                  <reqif:DEFINITION>
+                    <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>18</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+                  </reqif:DEFINITION>
+                </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-ENUMERATION>
+            <reqif:ATTRIBUTE-DEFINITION-DATE IDENTIFIER="20" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="Scheduled by">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-DATE-REF>3</reqif:DATATYPE-DEFINITION-DATE-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-DATE>
+          </reqif:SPEC-ATTRIBUTES>
+        </reqif:SPEC-OBJECT-TYPE>
+        <reqif:SPEC-RELATION-TYPE IDENTIFIER="29" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="SpecRelationType">
+          <reqif:SPEC-ATTRIBUTES>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="27" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="ID">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>2</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="28" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="Relation">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>2</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+              <reqif:DEFAULT-VALUE>
+                <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="relatesto"/>
+              </reqif:DEFAULT-VALUE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+          </reqif:SPEC-ATTRIBUTES>
+        </reqif:SPEC-RELATION-TYPE>
+        <reqif:SPECIFICATION-TYPE IDENTIFIER="13" LONG-NAME="SpecificationType">
+          <reqif:SPEC-ATTRIBUTES>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="10" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="ID">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>2</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+          </reqif:SPEC-ATTRIBUTES>
+        </reqif:SPECIFICATION-TYPE>
+        <reqif:SPEC-OBJECT-TYPE IDENTIFIER="12" LONG-NAME="HeadlineType">
+          <reqif:SPEC-ATTRIBUTES>
+            <reqif:ATTRIBUTE-DEFINITION-STRING IDENTIFIER="11" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="ID">
+              <reqif:TYPE>
+                <reqif:DATATYPE-DEFINITION-STRING-REF>5</reqif:DATATYPE-DEFINITION-STRING-REF>
+              </reqif:TYPE>
+            </reqif:ATTRIBUTE-DEFINITION-STRING>
+          </reqif:SPEC-ATTRIBUTES>
+        </reqif:SPEC-OBJECT-TYPE>
+      </reqif:SPEC-TYPES>
+      <reqif:SPEC-OBJECTS>
+        <reqif:SPEC-OBJECT IDENTIFIER="31">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="Chapter 1">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>11</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPEC-OBJECT-TYPE-REF>12</reqif:SPEC-OBJECT-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-OBJECT>
+        <reqif:SPEC-OBJECT IDENTIFIER="33">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="REQ_1">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>21</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+            <reqif:ATTRIBUTE-VALUE-XHTML>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-XHTML-REF>22</reqif:ATTRIBUTE-DEFINITION-XHTML-REF>
+              </reqif:DEFINITION>
+              <reqif:THE-VALUE>
+                <xhtml:div class="requirement"><xhtml:div><xhtml:p>Hello</xhtml:p></xhtml:div></xhtml:div>
+              </reqif:THE-VALUE>
+            </reqif:ATTRIBUTE-VALUE-XHTML>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>7</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>23</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>24</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>25</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPEC-OBJECT-TYPE-REF>26</reqif:SPEC-OBJECT-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-OBJECT>
+        <reqif:SPEC-OBJECT IDENTIFIER="35">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="Chapter 2">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>11</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPEC-OBJECT-TYPE-REF>12</reqif:SPEC-OBJECT-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-OBJECT>
+        <reqif:SPEC-OBJECT IDENTIFIER="37">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="Section 2.2">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>11</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPEC-OBJECT-TYPE-REF>12</reqif:SPEC-OBJECT-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-OBJECT>
+        <reqif:SPEC-OBJECT IDENTIFIER="39">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="REQ_2">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>21</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+            <reqif:ATTRIBUTE-VALUE-XHTML>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-XHTML-REF>22</reqif:ATTRIBUTE-DEFINITION-XHTML-REF>
+              </reqif:DEFINITION>
+              <reqif:THE-VALUE>
+                <xhtml:div class="requirement"><xhtml:div><xhtml:p>Hello</xhtml:p></xhtml:div></xhtml:div>
+              </reqif:THE-VALUE>
+            </reqif:ATTRIBUTE-VALUE-XHTML>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>7</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>23</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>24</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+            <reqif:ATTRIBUTE-VALUE-ENUMERATION>
+              <reqif:VALUES>
+                <reqif:ENUM-VALUE-REF>9</reqif:ENUM-VALUE-REF>
+              </reqif:VALUES>
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>25</reqif:ATTRIBUTE-DEFINITION-ENUMERATION-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-ENUMERATION>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPEC-OBJECT-TYPE-REF>26</reqif:SPEC-OBJECT-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-OBJECT>
+      </reqif:SPEC-OBJECTS>
+      <reqif:SPEC-RELATIONS>
+        <reqif:SPEC-RELATION IDENTIFIER="41" LAST-CHANGE="1970-01-01T00:00:00.000Z" LONG-NAME="SpecRelation">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="REQ_1 -> REQ_2">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>27</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="relatesto">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>28</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+          </reqif:VALUES>
+          <reqif:TARGET>
+            <reqif:SPEC-OBJECT-REF>39</reqif:SPEC-OBJECT-REF>
+          </reqif:TARGET>
+          <reqif:SOURCE>
+            <reqif:SPEC-OBJECT-REF>33</reqif:SPEC-OBJECT-REF>
+          </reqif:SOURCE>
+          <reqif:TYPE>
+            <reqif:SPEC-RELATION-TYPE-REF>29</reqif:SPEC-RELATION-TYPE-REF>
+          </reqif:TYPE>
+        </reqif:SPEC-RELATION>
+      </reqif:SPEC-RELATIONS>
+      <reqif:SPECIFICATIONS>
+        <reqif:SPECIFICATION IDENTIFIER="30" LONG-NAME="Spec">
+          <reqif:VALUES>
+            <reqif:ATTRIBUTE-VALUE-STRING THE-VALUE="Test-Specification">
+              <reqif:DEFINITION>
+                <reqif:ATTRIBUTE-DEFINITION-STRING-REF>10</reqif:ATTRIBUTE-DEFINITION-STRING-REF>
+              </reqif:DEFINITION>
+            </reqif:ATTRIBUTE-VALUE-STRING>
+          </reqif:VALUES>
+          <reqif:TYPE>
+            <reqif:SPECIFICATION-TYPE-REF>13</reqif:SPECIFICATION-TYPE-REF>
+          </reqif:TYPE>
+          <reqif:CHILDREN>
+            <reqif:SPEC-HIERARCHY IDENTIFIER="32" LONG-NAME="SpecHierarchy">
+              <reqif:OBJECT>
+                <reqif:SPEC-OBJECT-REF>31</reqif:SPEC-OBJECT-REF>
+              </reqif:OBJECT>
+              <reqif:CHILDREN>
+                <reqif:SPEC-HIERARCHY IDENTIFIER="34" LONG-NAME="SpecHierarchy">
+                  <reqif:OBJECT>
+                    <reqif:SPEC-OBJECT-REF>33</reqif:SPEC-OBJECT-REF>
+                  </reqif:OBJECT>
+                </reqif:SPEC-HIERARCHY>
+              </reqif:CHILDREN>
+            </reqif:SPEC-HIERARCHY>
+            <reqif:SPEC-HIERARCHY IDENTIFIER="36" LONG-NAME="SpecHierarchy">
+              <reqif:OBJECT>
+                <reqif:SPEC-OBJECT-REF>35</reqif:SPEC-OBJECT-REF>
+              </reqif:OBJECT>
+              <reqif:CHILDREN>
+                <reqif:SPEC-HIERARCHY IDENTIFIER="38" LONG-NAME="SpecHierarchy">
+                  <reqif:OBJECT>
+                    <reqif:SPEC-OBJECT-REF>37</reqif:SPEC-OBJECT-REF>
+                  </reqif:OBJECT>
+                  <reqif:CHILDREN>
+                    <reqif:SPEC-HIERARCHY IDENTIFIER="40" LONG-NAME="SpecHierarchy">
+                      <reqif:OBJECT>
+                        <reqif:SPEC-OBJECT-REF>39</reqif:SPEC-OBJECT-REF>
+                      </reqif:OBJECT>
+                    </reqif:SPEC-HIERARCHY>
+                  </reqif:CHILDREN>
+                </reqif:SPEC-HIERARCHY>
+              </reqif:CHILDREN>
+            </reqif:SPEC-HIERARCHY>
+          </reqif:CHILDREN>
+        </reqif:SPECIFICATION>
+      </reqif:SPECIFICATIONS>
+    </reqif:REQ-IF-CONTENT>
+  </reqif:CORE-CONTENT>
+</reqif:REQ-IF>

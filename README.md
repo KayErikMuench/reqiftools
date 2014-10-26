@@ -50,3 +50,10 @@ Requirements have only a few attributes:
 * a status marker
 * a priority marker an
 * a risk marker.
+
+ReqIF-Parser
+------------
+
+The ReqIF-Parser reads files in ReqIF-format and returns an RMF ReqIF object.
+
+
