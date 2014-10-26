@@ -36,3 +36,17 @@ The reqiftools shall wrap up the RMF packages to simplify creating and
 parsing ReqIF formatted files, used by perhaps a maven based toolchain
 or by yet another requirements tool.
 
+ReqIF-Compiler
+--------------
+
+The ReqIF-Compiler simplifies the creation of a specification by shifting 
+levels up and down in a hierarchy, marked up with headlines, and supplying requirements
+by adding specification objects at the current level.
+
+Requirements have only a few attributes:
+* an ID,
+* an XHTML-based description,
+* an optional date,
+* a status marker
+* a priority marker an
+* a risk marker.
