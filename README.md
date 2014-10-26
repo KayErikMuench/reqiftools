@@ -36,6 +36,7 @@ The reqiftools shall wrap up the RMF packages to simplify creating and
 parsing ReqIF formatted files, used by perhaps a maven based toolchain
 or by yet another requirements tool.
 
+
 ReqIF-Compiler
 --------------
 
@@ -48,8 +49,9 @@ Requirements have only a few attributes:
 * an XHTML-based description,
 * an optional date,
 * a status marker
-* a priority marker an
+* a priority marker and
 * a risk marker.
+
 
 ReqIF-Parser
 ------------
@@ -57,3 +59,7 @@ ReqIF-Parser
 The ReqIF-Parser reads files in ReqIF-format and returns an RMF ReqIF object.
 
 
+ReqIF-Iterator
+--------------
+
+Simple recursive callback-based iterator through specifications. 
