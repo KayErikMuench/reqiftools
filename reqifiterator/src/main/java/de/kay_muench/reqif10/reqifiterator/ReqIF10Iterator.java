@@ -18,14 +18,18 @@ import org.eclipse.rmf.reqif10.Specification;
 public final class ReqIF10Iterator {
 	public void iterateRecursivelyThrough(
 			final EList<Specification> specifications,
+			final SpecificationCallback specificationCallback,
 			final SpecObjectCallback specObjectCallback) {
 		for (Specification specification : specifications) {
-			this.iterateRecursivelyThrough(specification, specObjectCallback);
+			this.iterateRecursivelyThrough(specification,
+					specificationCallback, specObjectCallback);
 		}
 	}
 
 	public void iterateRecursivelyThrough(final Specification specification,
+			final SpecificationCallback specificationCallback,
 			final SpecObjectCallback specObjectCallback) {
+		specificationCallback.call(specification);
 		this.iterateRecursivelyThrough(specification.getChildren(), 0,
 				specObjectCallback);
 	}
@@ -38,11 +42,13 @@ public final class ReqIF10Iterator {
 				SpecObjectDTO.Builder builder = SpecObjectDTO.Builder
 						.newBuilder(hierarchy.getObject())
 						.setOutgoingRelations(
-								ReqIF10Finder.getOutgoingSpecRelationsFor(hierarchy
-								.getObject()))
+								ReqIF10Finder
+										.getOutgoingSpecRelationsFor(hierarchy
+												.getObject()))
 						.setIncomingRelations(
-								ReqIF10Finder.getIncomingSpecRelationsFor(hierarchy
-								.getObject()));
+								ReqIF10Finder
+										.getIncomingSpecRelationsFor(hierarchy
+												.getObject()));
 				specObjectCallback.call(builder.build(), depth);
 			}
 

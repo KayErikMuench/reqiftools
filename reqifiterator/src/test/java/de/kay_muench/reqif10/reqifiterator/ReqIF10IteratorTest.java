@@ -123,6 +123,30 @@ public class ReqIF10IteratorTest {
 
 	}
 
+	private class TestSpecification {
+
+		private String longName;
+		private String title;
+
+		public String getLongName() {
+			return longName;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setLongName(String longName) {
+			this.longName = longName;
+
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+	}
+
 	ReqIF reqif;
 
 	@Before
@@ -134,12 +158,28 @@ public class ReqIF10IteratorTest {
 
 	@Test
 	public void testReqIFIterator() {
+		final TestSpecification testSpecification = new TestSpecification();
 		final List<TestSpecObject> testSpecObjects = new ArrayList<TestSpecObject>();
 
 		ReqIF10Iterator iterator = new ReqIF10Iterator();
 		final EList<Specification> specs = reqif.getCoreContent()
 				.getSpecifications();
-		iterator.iterateRecursivelyThrough(specs, new SpecObjectCallback() {
+		iterator.iterateRecursivelyThrough(specs, new SpecificationCallback() {
+
+			@Override
+			public void call(Specification specification) {
+				testSpecification.setLongName(specification.getLongName());
+				if (specification.getValues().size() > 0) {
+					AttributeValue av = specification.getValues().get(0);
+					AttributeDefinition ad = ReqIF10Util
+							.getAttributeDefinition(av);
+					if (ad != null) {
+						testSpecification.setTitle(ReqIF10Util.getTheValue(av)
+								.toString());
+					}
+				}
+			}
+		}, new SpecObjectCallback() {
 
 			public void call(final SpecObjectDTO specObject, final int depth) {
 				TestSpecObject testSpecObject = new TestSpecObject();
@@ -160,9 +200,11 @@ public class ReqIF10IteratorTest {
 					TestRelation relation = new TestRelation();
 					relation.setId(out.getValueFor("ID"));
 					relation.setRelation(out.getValueFor("Relation"));
-					Specification specSrc = ReqIF10Finder.findSpecFor(out.getRelation().getSource());
+					Specification specSrc = ReqIF10Finder.findSpecFor(out
+							.getRelation().getSource());
 					relation.setSrcSpecId(specSrc.getIdentifier());
-					Specification specTgt = ReqIF10Finder.findSpecFor(out.getRelation().getTarget());
+					Specification specTgt = ReqIF10Finder.findSpecFor(out
+							.getRelation().getTarget());
 					relation.setTgtSpecId(specTgt.getIdentifier());
 					testSpecObject.getRelations().add(relation);
 				}
@@ -170,15 +212,20 @@ public class ReqIF10IteratorTest {
 					TestRelation relation = new TestRelation();
 					relation.setId(in.getValueFor("ID"));
 					relation.setRelation(in.getValueFor("Relation"));
-					Specification specSrc = ReqIF10Finder.findSpecFor(in.getRelation().getSource());
+					Specification specSrc = ReqIF10Finder.findSpecFor(in
+							.getRelation().getSource());
 					relation.setSrcSpecId(specSrc.getIdentifier());
-					Specification specTgt = ReqIF10Finder.findSpecFor(in.getRelation().getTarget());
+					Specification specTgt = ReqIF10Finder.findSpecFor(in
+							.getRelation().getTarget());
 					relation.setTgtSpecId(specTgt.getIdentifier());
 					testSpecObject.getRelations().add(relation);
 				}
 				testSpecObjects.add(testSpecObject);
 			}
 		});
+
+		assertEquals("Spec", testSpecification.getLongName());
+		assertEquals("Test-Specification", testSpecification.getTitle());
 
 		assertEquals(5, testSpecObjects.size());
 		assertEquals("HeadlineType", testSpecObjects.get(0).getType());
@@ -223,18 +270,35 @@ public class ReqIF10IteratorTest {
 
 	@Test
 	public void testReqIFIterator_ShouldFilterOutline() {
+		final TestSpecification testSpecification = new TestSpecification();
 		final List<TestSpecObject> testSpecObjects = new ArrayList<TestSpecObject>();
-		
+
 		ReqIF10Iterator iterator = new ReqIF10Iterator();
 		final EList<Specification> specs = reqif.getCoreContent()
 				.getSpecifications();
-		iterator.iterateRecursivelyThrough(specs, new SpecObjectCallback() {
+		iterator.iterateRecursivelyThrough(specs, new SpecificationCallback() {
+
+			@Override
+			public void call(Specification specification) {
+				testSpecification.setLongName(specification.getLongName());
+				if (specification.getValues().size() > 0) {
+					AttributeValue av = specification.getValues().get(0);
+					AttributeDefinition ad = ReqIF10Util
+							.getAttributeDefinition(av);
+					if (ad != null) {
+						testSpecification.setTitle(ReqIF10Util.getTheValue(av)
+								.toString());
+					}
+				}
+			}
+		}, new SpecObjectCallback() {
 
 			public void call(final SpecObjectDTO specObject, final int depth) {
 				if (specObject.getTypeName().equals("HeadlineType")) {
 					TestSpecObject testSpecObject = new TestSpecObject();
 					testSpecObject.setType(specObject.getTypeName());
-					for (AttributeValue av : specObject.getSpecObject().getValues()) {
+					for (AttributeValue av : specObject.getSpecObject()
+							.getValues()) {
 						AttributeDefinition ad = ReqIF10Util
 								.getAttributeDefinition(av);
 						TestAttribute attribute = new TestAttribute();
@@ -249,6 +313,9 @@ public class ReqIF10IteratorTest {
 				}
 			}
 		});
+
+		assertEquals("Spec", testSpecification.getLongName());
+		assertEquals("Test-Specification", testSpecification.getTitle());
 		
 		assertEquals(3, testSpecObjects.size());
 		this.assertSpecObjectAttributes(testSpecObjects.get(0), "ID",
