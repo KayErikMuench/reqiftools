@@ -29,7 +29,7 @@ public final class ReqIF10Iterator {
 	public void iterateRecursivelyThrough(final Specification specification,
 			final SpecificationCallback specificationCallback,
 			final SpecObjectCallback specObjectCallback) {
-		specificationCallback.call(specification);
+		specificationCallback.call(SpecificationDTO.Builder.newBuilder(specification).build());
 		this.iterateRecursivelyThrough(specification.getChildren(), 0,
 				specObjectCallback);
 	}

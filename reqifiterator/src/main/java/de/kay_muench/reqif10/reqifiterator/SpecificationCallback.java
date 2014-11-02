@@ -11,8 +11,7 @@
  */
 package de.kay_muench.reqif10.reqifiterator;
 
-import org.eclipse.rmf.reqif10.Specification;
 
 public interface SpecificationCallback {
-	public void call(final Specification specification);
+	public void call(final SpecificationDTO specificationDto);
 }

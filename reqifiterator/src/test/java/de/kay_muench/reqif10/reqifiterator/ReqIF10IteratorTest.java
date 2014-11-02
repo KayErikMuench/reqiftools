@@ -167,17 +167,9 @@ public class ReqIF10IteratorTest {
 		iterator.iterateRecursivelyThrough(specs, new SpecificationCallback() {
 
 			@Override
-			public void call(Specification specification) {
-				testSpecification.setLongName(specification.getLongName());
-				if (specification.getValues().size() > 0) {
-					AttributeValue av = specification.getValues().get(0);
-					AttributeDefinition ad = ReqIF10Util
-							.getAttributeDefinition(av);
-					if (ad != null) {
-						testSpecification.setTitle(ReqIF10Util.getTheValue(av)
-								.toString());
-					}
-				}
+			public void call(SpecificationDTO specificationDto) {
+				testSpecification.setLongName(specificationDto.getLongName());
+				testSpecification.setTitle(specificationDto.getAttributeValue(0));
 			}
 		}, new SpecObjectCallback() {
 
@@ -279,17 +271,9 @@ public class ReqIF10IteratorTest {
 		iterator.iterateRecursivelyThrough(specs, new SpecificationCallback() {
 
 			@Override
-			public void call(Specification specification) {
-				testSpecification.setLongName(specification.getLongName());
-				if (specification.getValues().size() > 0) {
-					AttributeValue av = specification.getValues().get(0);
-					AttributeDefinition ad = ReqIF10Util
-							.getAttributeDefinition(av);
-					if (ad != null) {
-						testSpecification.setTitle(ReqIF10Util.getTheValue(av)
-								.toString());
-					}
-				}
+			public void call(SpecificationDTO specificationDto) {
+				testSpecification.setLongName(specificationDto.getLongName());
+				testSpecification.setTitle(specificationDto.getAttributeValue(0));
 			}
 		}, new SpecObjectCallback() {
 
