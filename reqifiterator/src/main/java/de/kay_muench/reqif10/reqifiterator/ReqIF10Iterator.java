@@ -13,6 +13,7 @@ package de.kay_muench.reqif10.reqifiterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.rmf.reqif10.SpecHierarchy;
+import org.eclipse.rmf.reqif10.SpecRelation;
 import org.eclipse.rmf.reqif10.Specification;
 
 public final class ReqIF10Iterator {
@@ -56,5 +57,14 @@ public final class ReqIF10Iterator {
 					specObjectCallback);
 		}
 
+	}
+
+	public void iterateThrough(EList<SpecRelation> relations,
+			SpecRelationCallback specRelationCallback) {
+		for (SpecRelation relation : relations) {
+			SpecRelationDTO dto = SpecRelationDTO.Builder.newBuilder()
+					.fromRelation(relation).build();
+			specRelationCallback.call(dto);
+		}
 	}
 }

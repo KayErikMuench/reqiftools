@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.rmf.reqif10.AttributeDefinition;
 import org.eclipse.rmf.reqif10.AttributeValue;
 import org.eclipse.rmf.reqif10.ReqIF;
+import org.eclipse.rmf.reqif10.SpecRelation;
 import org.eclipse.rmf.reqif10.Specification;
 import org.eclipse.rmf.reqif10.common.util.ReqIF10Util;
 import org.junit.Before;
@@ -160,10 +161,14 @@ public class ReqIF10IteratorTest {
 	public void testReqIFIterator() {
 		final TestSpecification testSpecification = new TestSpecification();
 		final List<TestSpecObject> testSpecObjects = new ArrayList<TestSpecObject>();
+		final List<TestRelation> testRelations = new ArrayList<TestRelation>();
 
 		ReqIF10Iterator iterator = new ReqIF10Iterator();
 		final EList<Specification> specs = reqif.getCoreContent()
 				.getSpecifications();
+		final EList<SpecRelation> relations = reqif.getCoreContent()
+				.getSpecRelations();
+
 		iterator.iterateRecursivelyThrough(specs, new SpecificationCallback() {
 
 			@Override
@@ -216,6 +221,23 @@ public class ReqIF10IteratorTest {
 			}
 		});
 
+		iterator.iterateThrough(relations, new SpecRelationCallback() {
+
+			@Override
+			public void call(SpecRelationDTO relationDTO) {
+				TestRelation relation = new TestRelation();
+				relation.setId(relationDTO.getValueFor("ID"));
+				relation.setRelation(relationDTO.getValueFor("Relation"));
+				Specification specSrc = ReqIF10Finder.findSpecFor(relationDTO
+						.getRelation().getSource());
+				relation.setSrcSpecId(specSrc.getIdentifier());
+				Specification specTgt = ReqIF10Finder.findSpecFor(relationDTO
+						.getRelation().getTarget());
+				relation.setTgtSpecId(specTgt.getIdentifier());
+				testRelations.add(relation);
+			}
+		});
+
 		assertEquals("Spec", testSpecification.getLongName());
 		assertEquals("Test-Specification", testSpecification.getTitle());
 
@@ -257,6 +279,15 @@ public class ReqIF10IteratorTest {
 		assertEquals("30", testSpecObjects.get(4).getRelations().get(0)
 				.getSrcSpecId());
 		assertEquals("30", testSpecObjects.get(4).getRelations().get(0)
+				.getTgtSpecId());
+
+		assertEquals(1, testRelations.size());
+		assertEquals("REQ_1 -> REQ_2", testRelations.get(0).getId());
+		assertEquals("relatesto", testRelations.get(0)
+				.getRelation());
+		assertEquals("30", testRelations.get(0)
+				.getSrcSpecId());
+		assertEquals("30", testRelations.get(0)
 				.getTgtSpecId());
 	}
 
@@ -300,7 +331,7 @@ public class ReqIF10IteratorTest {
 
 		assertEquals("Spec", testSpecification.getLongName());
 		assertEquals("Test-Specification", testSpecification.getTitle());
-		
+
 		assertEquals(3, testSpecObjects.size());
 		this.assertSpecObjectAttributes(testSpecObjects.get(0), "ID",
 				"Chapter 1");
