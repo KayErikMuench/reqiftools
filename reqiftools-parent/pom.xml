@@ -103,8 +103,8 @@
 		<module>../reqifparser</module>
 	</modules>
 	<scm>
-		<connection>https://github.com/KayErikMuench/reqiftools.git</connection>
-		<developerConnection>https://github.com/KayErikMuench/reqiftools.git</developerConnection>
+		<connection>scm:git:https://github.com/KayErikMuench/reqiftools.git</connection>
+		<developerConnection>scm:git:https://github.com/KayErikMuench/reqiftools.git</developerConnection>
 		<url>https://github.com/KayErikMuench/reqiftools</url>
 	</scm>
 </project>
