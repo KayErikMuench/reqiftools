@@ -189,7 +189,7 @@ public class ReqIF10IteratorTest {
 
 			@Override
 			public void call(SpecificationDTO specificationDto) {
-				testSpecification.setLongName(specificationDto.getLongName());
+				testSpecification.setLongName(specificationDto.getTypeName());
 				testSpecification.setTitle(specificationDto.getAttributeValue(0));
 			}
 		}, new SpecObjectCallback() {
@@ -319,7 +319,7 @@ public class ReqIF10IteratorTest {
 
 			@Override
 			public void call(SpecificationDTO specificationDto) {
-				testSpecification.setLongName(specificationDto.getLongName());
+				testSpecification.setLongName(specificationDto.getTypeName());
 				testSpecification.setTitle(specificationDto.getAttributeValue(0));
 			}
 		}, new SpecObjectCallback() {

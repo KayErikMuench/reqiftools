@@ -37,6 +37,10 @@ public final class SpecRelationDTO {
 		return value;
 	}
 
+	public String getTypeName() {
+		return this.relation.getLongName();
+	}
+
 	public static final class Builder {
 		private SpecRelation relation;
 

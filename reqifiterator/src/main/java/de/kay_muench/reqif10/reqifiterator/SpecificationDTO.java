@@ -23,7 +23,7 @@ public class SpecificationDTO {
 		this.specification = specification;
 	}
 
-	public String getLongName() {
+	public String getTypeName() {
 		return specification.getLongName();
 	}
 
