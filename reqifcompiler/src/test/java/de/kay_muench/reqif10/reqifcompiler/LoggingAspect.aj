@@ -12,6 +12,8 @@
 package de.kay_muench.reqif10.reqifcompiler;
 
 
+import org.apache.log4j.Logger;
+
 import de.kay_muench.reqif10.reqifcompiler.dto.RelationTypeDTO;
 import de.kay_muench.reqif10.reqifcompiler.dto.RequirementDTO;
 
@@ -20,23 +22,25 @@ import de.kay_muench.reqif10.reqifcompiler.dto.RequirementDTO;
  * 
  */
 public aspect LoggingAspect {
+	private Logger logger = Logger.getLogger("testlogger");
+	
 	pointcut addrelation(RelationTypeDTO type, RequirementDTO src,
 			RequirementDTO dest) : execution(* ReqIF10Compiler.addRelation(..)) && args(type, src, dest);
 
 	before(RelationTypeDTO type, RequirementDTO src, RequirementDTO dest) : addrelation(type, src, dest) {
-		System.out.println(type.name() + " " + src.getName() + " "
+		logger.info(type.name() + " " + src.getName() + " "
 				+ dest.getName());
 	}
 
 	pointcut export(String id) : execution(* ReqIF10Compiler.export(..)) && args(id);
 
 	before(String id) : export(id) {
-		System.out.println("creating export for " + id);
+		logger.info("creating export for " + id);
 	}
 
 	pointcut initialize() : execution(* ReqIF10Compiler.initialize(..));
 
 	before() : initialize() {
-		System.out.println("initializing compiler");
+		logger.info("initializing compiler");
 	}
 }

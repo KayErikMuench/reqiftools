@@ -13,16 +13,18 @@ package de.kay_muench.reqif10.reqifiterator;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.eclipse.rmf.reqif10.SpecObject;
 import org.eclipse.rmf.reqif10.SpecRelation;
 
 public aspect LoggingAspect {
+	private Logger logger = Logger.getLogger("testlogger");
 
 	pointcut incomingrelations(SpecObject target) : execution(* ReqIF10Finder.getIncomingSpecRelationsFor(..)) && args(target);
 
 	after(SpecObject target) returning(List<SpecRelation> relations) : incomingrelations(target) {
 		for (SpecRelation relation : relations) {
-			System.out.println("incoming for target " + target.getIdentifier() + ": " + relation.getIdentifier());		
+			logger.info("incoming for target " + target.getIdentifier() + ": " + relation.getIdentifier());		
 		}
 	}
 	
@@ -30,7 +32,7 @@ public aspect LoggingAspect {
 
 	after(SpecObject source) returning(List<SpecRelation> relations) : outgoingrelations(source) {
 		for (SpecRelation relation : relations) {
-			System.out.println("outgoing for source " + source.getIdentifier() + ": " + relation.getIdentifier());		
+			logger.info("outgoing for source " + source.getIdentifier() + ": " + relation.getIdentifier());		
 		}
 	}
 }

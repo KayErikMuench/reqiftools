@@ -16,6 +16,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.rmf.reqif10.AttributeDefinition;
 import org.eclipse.rmf.reqif10.AttributeValue;
@@ -24,6 +27,7 @@ import org.eclipse.rmf.reqif10.SpecRelation;
 import org.eclipse.rmf.reqif10.Specification;
 import org.eclipse.rmf.reqif10.common.util.ReqIF10Util;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.kay_muench.reqif10.reqifparser.ReqIF10Parser;
@@ -149,6 +153,18 @@ public class ReqIF10IteratorTest {
 	}
 
 	ReqIF reqif;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		ConsoleAppender appender = new ConsoleAppender();
+		appender.setName("testappender");
+		appender.setLayout(new PatternLayout("%-5p [%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"));
+		appender.setTarget(ConsoleAppender.SYSTEM_OUT);
+		appender.activateOptions();
+		
+		Logger.getLogger("testlogger").addAppender(appender);
+		
+	}
 
 	@Before
 	public void setUp() throws Exception {

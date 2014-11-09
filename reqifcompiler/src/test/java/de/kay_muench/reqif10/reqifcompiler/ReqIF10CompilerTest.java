@@ -19,6 +19,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.eclipse.emf.common.util.Enumerator;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -121,6 +125,17 @@ public class ReqIF10CompilerTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() {
+		ConsoleAppender appender = new ConsoleAppender();
+		appender.setName("testappender");
+		appender.setLayout(new PatternLayout("%-5p [%d{dd MMM yyyy HH:mm:ss,SSS}]: %m%n"));
+		appender.setTarget(ConsoleAppender.SYSTEM_OUT);
+		appender.activateOptions();
+		
+		Logger.getLogger("org.apache.xmlgraphics").addAppender(appender);
+		Logger.getLogger("org.apache.xmlgraphics").setLevel(Level.INFO);
+		
+		Logger.getLogger("testlogger").addAppender(appender);
+		
 		RelationTypeDTO.DEFAULT = RelationTestEnumerator.RELATESTO;
 		RankingDTO.DEFAULT = RankingTestEnumerator.RTEST.getValue();
 		RankingDTO.VALUES = RankingTestEnumerator.VALUES;

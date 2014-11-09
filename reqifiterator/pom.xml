@@ -67,6 +67,10 @@
 			<version>1.6.11</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
 	</dependencies>
 	<parent>
 		<groupId>de.kay-muench.reqif10</groupId>
