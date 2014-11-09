@@ -99,5 +99,7 @@
 	<url>de.kay-muench.reqif10</url>
 	<modules>
 		<module>../reqifcompiler</module>
+		<module>../reqifiterator</module>
+		<module>../reqifparser</module>
 	</modules>
 </project>
